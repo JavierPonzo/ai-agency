@@ -1,0 +1,31 @@
+<!-- ✅ Case Studies Section (Carousel) -->
+<section class="case-studies-section text-center py-5">
+  <div class="container">
+    <h2 class="mb-4">Success Stories</h2>
+    <div id="caseStudyCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @case_studies.each_with_index do |case_study, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <div class="case-study-card p-4 shadow-sm bg-dark text-white rounded">
+              <h4><%= case_study.title %></h4>
+              <p><strong>Client:</strong> <%= case_study.client %></p>
+              <p><%= case_study.description %></p>
+              <p><strong>Results:</strong> <%= case_study.results %></p>
+              <div class="stars mt-2">
+                <% 5.times do %>
+                  <i class="fas fa-star text-warning"></i> <!-- ⭐ Star Icon -->
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#caseStudyCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#caseStudyCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</section>

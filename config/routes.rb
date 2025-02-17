@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
+
+  resources :testimonials, only: [:index]
+  resources :case_studies, only: [:index, :show]
+
 end

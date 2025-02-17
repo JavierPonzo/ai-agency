@@ -1,0 +1,10 @@
+<section id="case-study-details" class="py-5">
+  <div class="container">
+    <h2 class="text-white"><%= @case_study.title %></h2>
+    <p><strong>Client:</strong> <%= @case_study.client %></p>
+    <p><%= @case_study.description %></p>
+    <h4 class="text-primary">Results:</h4>
+    <p><%= @case_study.results %></p>
+    <a href="<%= case_studies_path %>" class="btn btn-secondary">Back to Case Studies</a>
+  </div>
+</section>
