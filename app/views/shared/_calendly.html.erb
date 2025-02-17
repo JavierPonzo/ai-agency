@@ -1,16 +1,21 @@
-<turbo-frame id="calendly-frame">
-  <!-- Calendly inline widget -->
-  <div id="calendly-embed" style="min-width:320px;height:700px;"></div>
+<!-- Calendly Section -->
+<div id="book" class="calendly-section" style="min-width:320px;height:700px;">
+  <div id="calendly-embed"></div>
 
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
 
   <script>
     document.addEventListener("turbo:load", function() {
-      Calendly.initInlineWidget({
-        url: 'https://calendly.com/ponzojavier/30min', // Replace with your Calendly link
-        parentElement: document.getElementById('calendly-embed'),
-        resize: true
-      });
+      let calendlyContainer = document.getElementById("calendly-embed");
+
+      // Ensure only one instance of Calendly
+      if (!calendlyContainer.hasChildNodes()) {
+        Calendly.initInlineWidget({
+          url: 'https://calendly.com/ponzojavier/30min',
+          parentElement: calendlyContainer,
+          resize: true
+        });
+      }
     });
   </script>
-</turbo-frame>
+</div>

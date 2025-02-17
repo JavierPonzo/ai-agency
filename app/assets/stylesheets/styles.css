@@ -10974,6 +10974,7 @@ textarea.form-control-lg {
 }
 html {
   scroll-padding-top: calc(4.5rem - 1px);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -11215,7 +11216,7 @@ html, body {
 }
 
 
-.signup-section {
+.book-section {
   padding: 10rem 0;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/footer.png");
   background-position: center;
@@ -11223,7 +11224,7 @@ html, body {
   background-attachment: scroll;
   background-size: cover;
 }
-.signup-section .form-signup input {
+.book-section .form-signup input {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
   height: auto;
