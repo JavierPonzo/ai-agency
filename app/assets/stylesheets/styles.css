@@ -11166,33 +11166,57 @@ html, body {
 
 .projects-section {
   padding: 10rem 0;
-  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.6) 100%),
-              url("../assets/13.png");
+  background:
+    /* Dark gradient at the top */
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 1) 0%,  /* Full black at the top */
+      rgba(0, 0, 0, 0.7) 50%, /* Dark fading mid-way */
+      rgba(0, 0, 0, 0.5) 75%, /* Still dark at 75% */
+      rgba(255, 255, 255, 1) 100% /* Full white at bottom */
+    ),
+    url("../assets/13.png");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: fit-content;
 }
-.projects-section .featured-text {
-  padding: 2rem;
+/* Mantener alturas iguales */
+.projects-section .row {
+  display: flex;
+  flex-wrap: wrap;
 }
-@media (min-width: 992px) {
-  .projects-section .featured-text {
-    padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
+
+/* Evitar que las imágenes se deformen */
+.projects-section img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mantener alineación correcta y evitar roturas en 1200px */
+@media (max-width: 1200px) {
+  .projects-section .row {
+      flex-direction: column;
   }
-}
-.projects-section .project-text {
-  padding: 3rem;
-  font-size: 90%;
-}
-@media (min-width: 992px) {
-  .projects-section .project-text {
-    padding: 5rem;
+  .projects-section .col-lg-6 {
+      width: 100%;
   }
 }
 
+/* Corrección entre 992px y 770px */
+@media (max-width: 992px) and (min-width: 770px) {
+  .projects-section .row {
+      display: flex;
+      flex-direction: column;
+  }
+  .projects-section .col-lg-6 {
+      width: 100%;
+  }
+}
+
+
 .signup-section {
   padding: 10rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../assets/img/bg-signup.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
