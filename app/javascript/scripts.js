@@ -1,13 +1,5 @@
-/*!
-* Start Bootstrap - Grayscale v7.0.6 (https://startbootstrap.com/theme/grayscale)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
-*/
-//
-// Scripts
-//
-
-window.addEventListener('DOMContentLoaded', event => {
+function initNavbarCollapse() {
+  console.log("Navbar collapse initialized!"); // Debugging message
 
   // Navbar shrink function
   var navbarShrink = function () {
@@ -16,17 +8,14 @@ window.addEventListener('DOMContentLoaded', event => {
           return;
       }
       if (window.scrollY === 0) {
-          navbarCollapsible.classList.remove('navbar-shrink')
+          navbarCollapsible.classList.remove('navbar-shrink');
       } else {
-          navbarCollapsible.classList.add('navbar-shrink')
+          navbarCollapsible.classList.add('navbar-shrink');
       }
-
   };
 
-  // Shrink the navbar
-  navbarShrink();
-
   // Shrink the navbar when page is scrolled
+  navbarShrink();
   document.addEventListener('scroll', navbarShrink);
 
   // Activate Bootstrap scrollspy on the main nav element
@@ -36,19 +25,47 @@ window.addEventListener('DOMContentLoaded', event => {
           target: '#mainNav',
           rootMargin: '0px 0px -40%',
       });
-  };
+  }
 
-  // Collapse responsive navbar when toggler is visible
-  const navbarToggler = document.body.querySelector('.navbar-toggler');
-  const responsiveNavItems = [].slice.call(
-      document.querySelectorAll('#navbarResponsive .nav-link')
-  );
-  responsiveNavItems.map(function (responsiveNavItem) {
-      responsiveNavItem.addEventListener('click', () => {
-          if (window.getComputedStyle(navbarToggler).display !== 'none') {
-              navbarToggler.click();
+  // Collapse responsive navbar when a link is clicked
+  const navbarToggler = document.querySelector('.navbar-toggler');
+  const responsiveNavItems = document.querySelectorAll('#navbarResponsive .nav-link');
+
+  if (navbarToggler && responsiveNavItems.length > 0) {
+      responsiveNavItems.forEach((navItem) => {
+          navItem.addEventListener('click', () => {
+              if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                  navbarToggler.click();
+              }
+          });
+      });
+  }
+}
+
+// Run function on first page load
+document.addEventListener('DOMContentLoaded', initNavbarCollapse);
+
+// Ensure function runs after Turbo Drive page updates
+document.addEventListener('turbo:load', initNavbarCollapse);
+
+function enableSmoothScroll() {
+  document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+              window.scrollTo({
+                  top: targetElement.offsetTop - 70, // Adjust offset if needed
+                  behavior: 'smooth'
+              });
           }
       });
   });
+}
 
-});
+// Run smooth scroll function on page load and Turbo navigation
+document.addEventListener('DOMContentLoaded', enableSmoothScroll);
+document.addEventListener('turbo:load', enableSmoothScroll);
+
